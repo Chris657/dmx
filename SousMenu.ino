@@ -2,9 +2,9 @@ void SousMenu() // affichage des sous menu
 {
   delay(50);
   BoutonMenuSuivant();
-  index = NbDeviceOpen();  // max devices
+  index = NbDeviceOpen();  // max devices utilisé
 
-  
+
   switch (menu)
   {
     case 1:
@@ -181,6 +181,8 @@ void SousMenu() // affichage des sous menu
             screen.setCursor(/*x=*/165,/*y=*/50);
             screen.print(compteurSousMenu);
             screen.fillRect( 210, 75 ,  40,  15,  BLACK);
+            screen.fillRect( 70, 150 ,  40,  15,  BLACK);
+            screen.fillRect( 140, 125 ,  40,  15,  BLACK);
           }
           break;
 
@@ -253,13 +255,13 @@ void SousMenu() // affichage des sous menu
       {
         case 1:
 
-          if (compteurSousMenu < 0)
+          if (compteurSousMenu < 1)
           {
-            compteurSousMenu = 0;
+            compteurSousMenu = 1;
           }
-          else if (compteurSousMenu > 19)
+          else if (compteurSousMenu > 20)
           {
-            compteurSousMenu = 19;
+            compteurSousMenu = 20;
           }
           if (compteurSousMenu != oldValue)
           {
@@ -267,7 +269,7 @@ void SousMenu() // affichage des sous menu
             screen.fillRect( 120, 50 ,  40,  15,  BLACK);
             screen.setTextColor(COLOR);
             screen.setCursor(/*x=*/120,/*y=*/50);
-            screen.print(listPreset[compteurSousMenu]->GetID());
+            screen.print(compteurSousMenu);
           }
           break;
 
@@ -277,50 +279,40 @@ void SousMenu() // affichage des sous menu
           {
             compteurSousMenu = 1;
           }
-          else if (compteurSousMenu > 31)
+          else if (compteurSousMenu > 32)
           {
-            compteurSousMenu = 31;
+            compteurSousMenu = 32;
           }
 
           if (compteurSousMenu != oldValue)
           {
             oldValue = compteurSousMenu;
-            screen.fillRect( 120, 50 ,  40,  15,  BLACK);
+            screen.fillRect( 100, 70 ,  40,  15,  BLACK);
             screen.setTextColor(COLOR);
             screen.setCursor(/*x=*/100,/*y=*/70);
-            screen.print(listNote[compteurSousMenu]->GetID());
+            screen.print(compteurSousMenu);
           }
 
           break;
 
         case 3:
 
-          if (compteurSousMenu < 1)
+          if (compteurSousMenu < 0)
           {
-            compteurSousMenu = 1;
+            compteurSousMenu = 0;
           }
-          else if (compteurSousMenu > 2)
+          else if (compteurSousMenu > 12)
           {
-            compteurSousMenu = 2;
+            compteurSousMenu = 12;
           }
 
-          if (compteurSousMenu == 1)
+          if (compteurSousMenu != oldValue)
           {
-            screen.setTextColor(BLACK);
-            screen.setCursor(/*x=*/190,/*y=*/120);
-            screen.print("2");
+            oldValue = compteurSousMenu;
+            screen.fillRect( 190, 120 ,  40,  15,  BLACK);
             screen.setTextColor(COLOR);
             screen.setCursor(/*x=*/190,/*y=*/120);
-            screen.print("1");
-          }
-          else if (compteurSousMenu == 2)
-          {
-            screen.setTextColor(BLACK);
-            screen.setCursor(/*x=*/190,/*y=*/120);
-            screen.print("1");
-            screen.setTextColor(COLOR);
-            screen.setCursor(/*x=*/190,/*y=*/120);
-            screen.print("20");
+            screen.print(compteurSousMenu);
           }
 
           break;

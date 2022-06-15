@@ -5,7 +5,7 @@
    @author Christopher Ristic & Nicolas Bucher
    @Supported on Mega2560
    @version V1.0
-   @date 14.06.2022
+   @date 15.06.2022
    @git : https://github.com/Chris657/dmx.git
 */
 
@@ -66,11 +66,13 @@ short oldValue = -10;
 Preset *listPreset[20];
 Note *listNote[32];
 Device *listDevice[8];
-short choixDevice;
+short choixDevice = 0;
 String Mode[2] = {"Hold", "AR"};
 String CV[4] = {"CV1", "CV2", "CV3", "CV4"};
 short listChannel[3][16]; //[0][] = channel | [1][] = envelop | [2][] = CV
 short index = 0;
+short preset = 0;
+short note = 0;
 
 DFRobot_ST7789_240x240_HW_SPI screen(/*dc=*/TFT_DC,/*cs=*/TFT_CS,/*rst=*/TFT_RST);
 

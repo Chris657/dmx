@@ -1,9 +1,9 @@
 void BoutonMenuSuivant() // passer au menu suivant en appuyant sur l'encodeur
 {
   delay(50); // nécessaire pour éviter les rebonds
-  
+
   boutonSwitch = digitalRead(pinS); // lecture du bouton switch de l'encodeur
-  
+
   if (boutonSwitch != oldSwitch)
   {
     oldSwitch = boutonSwitch;
@@ -108,6 +108,23 @@ void BoutonMenuSuivant() // passer au menu suivant en appuyant sur l'encodeur
             sousMenuActivated = true;
             COLOR = RED;
           }
+          else if (sousMenuActivated && compteurMenu < 5)
+          {
+            switch (compteurMenu)
+            {
+              case 1:
+                preset = compteurSousMenu - 1;
+                break;
+              case 2:
+                note = compteurSousMenu - 1;
+                break;
+              case 3:
+                listPreset[preset]->SetGate(note, compteurSousMenu);
+                break;
+            }
+            COLOR = WHITE;
+            sousMenuActivated = false;
+          }
           else if (sousMenuActivated && !bloqueSousMenuSecondaire && (compteurMenu == 5 || compteurMenu == 6))
           {
             bloqueSousMenuSecondaire = true;
@@ -119,15 +136,10 @@ void BoutonMenuSuivant() // passer au menu suivant en appuyant sur l'encodeur
             sousMenuActivated = false;
             bloqueSousMenuSecondaire = false;
           }
-          else if (sousMenuActivated && compteurMenu < 5)
-          {
-            COLOR = WHITE;
-            sousMenuActivated = false;
-          }
           break;
 
         case 4:
-
+        
           if (!sousMenuActivated)
           {
             sousMenuActivated = true;

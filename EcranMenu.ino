@@ -133,11 +133,17 @@ void  AfficheMenuDeux(short menu, short compteurMenu) // gestion du texte du men
   screen.setCursor(/*x=*/30,/*y=*/10);
   screen.setTextColor(text);
   screen.print("DMX CONFIG");
-
-
   screen.setTextSize(2);
+
   screen.setCursor(/*x=*/30,/*y=*/50);
   screen.print("DEVICE NUM:");
+  if (listDevice[0]->GetID() != NULL)
+  {
+    screen.fillRect( 165, 50 ,  40,  15,  BLACK);
+    screen.setTextColor(COLOR);
+    screen.setCursor(/*x=*/165,/*y=*/50);
+    screen.print(listDevice[0]->GetID());
+  }
 
   screen.setCursor(/*x=*/30,/*y=*/75);
   screen.print("DEVICE CHANNEL:");
@@ -147,7 +153,6 @@ void  AfficheMenuDeux(short menu, short compteurMenu) // gestion du texte du men
 
   screen.setCursor(/*x=*/30,/*y=*/150);
   screen.print("CV:");
-
 
   screen.setCursor(/*x=*/210,/*y=*/225);
   screen.print("OK");
@@ -163,25 +168,27 @@ void  AfficheMenuTrois(short menu, short compteurMenu) // gestion du texte du me
 
   screen.setCursor(/*x=*/0,/*y=*/50);
   screen.setTextSize(2);
-  screen.print("  PRESET:");
+  screen.print("  PRESET:");  
   if (listPreset[0]->GetID() != NULL)
   {
+    screen.fillRect( 120, 50 ,  40,  15,  BLACK);
+    screen.setTextColor(COLOR);
     screen.setCursor(/*x=*/120,/*y=*/50);
-    screen.print(listPreset[compteurSousMenu]->GetID());
+    screen.print(listPreset[0]->GetID());
   }
 
   screen.setCursor(/*x=*/0,/*y=*/70);
   screen.print("  NOTE:");
-  if (listPreset[0]->GetListNote(compteurSousMenu) != NULL)
+  if (listPreset[0]->GetNoteID(0) != NULL)
   {
+    screen.fillRect( 100, 70 ,  40,  15,  BLACK);
+    screen.setTextColor(COLOR);
     screen.setCursor(/*x=*/100,/*y=*/70);
-    screen.print(listPreset[compteurSousMenu]->GetListNote(compteurSousMenu));    
+    screen.print(listPreset[0]->GetNoteID(0));
   }
 
   screen.setCursor(/*x=*/0,/*y=*/120);
   screen.print("  TRIGGER GATE:");
-  screen.setCursor(/*x=*/190,/*y=*/120);
-  screen.print("2");
 
   screen.setCursor(/*x=*/0,/*y=*/140);
   screen.print("  MODE:");
