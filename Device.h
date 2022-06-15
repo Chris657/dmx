@@ -18,6 +18,14 @@ class Note
     {
       return id;
     }
+    void SetGate(short gate)
+    {
+        this->gate = gate;
+    }
+    short GetGate()
+    {
+        return gate;
+    }
 };
 
 class Preset
@@ -41,10 +49,19 @@ class Preset
     {
       return id;
     }
-    short GetListNote(short i)
+    short GetNoteID(short i)
     {
       return listNote[i]->GetID();
     }
+    void SetGate(short note, short compteurSousMenu)
+    {
+        listNote[note]->SetGate(compteurSousMenu);
+    }
+    short GetGateNote(short note)
+    {
+        return listNote[note]->GetGate();
+
+    }  
 };
 
 class Device
@@ -109,7 +126,7 @@ class Device
 
     void SetEnvAdress(short envAddr, short channel)
     {
-      listChannel[1][channel] = envAddr;''
+      listChannel[1][channel] = envAddr;
     }
     void SetcvAttr(short cvAttr, short channel)
     {
